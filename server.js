@@ -8,11 +8,10 @@ app.get("/", (req, res) => {
 });
 app.use(express.json());
 app.post("/user", (req, res) => {
+  sendOTPEmail(req.body.email, req.body.name, req.body.otp);
   res.send(req.body);
-  sendOTPEmail(req.body.email, req.body.name,req.body.otp);
-  console.log(req.body);
 });
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 7000;
 app.listen(port, (req, res) => {
   console.log(`server listening on port ${port}`);
 });
