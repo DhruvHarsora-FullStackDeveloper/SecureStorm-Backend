@@ -19,6 +19,7 @@
     "express": "^4.17.3",
     "helmet": "^5.0.2",
     "mongodb": "^4.4.1",
+    "react-native-sqlite-storage": "^6.0.1",
     "validator": "^13.7.0"
   },
   "devDependencies": {
