@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "env-cmd -f production.env node src/app.js",
     "dev": "env-cmd -f development.env nodemon src/app.js",
