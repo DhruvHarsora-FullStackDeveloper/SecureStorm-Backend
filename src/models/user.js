@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       require: true,
-      minlength: 6,
     },
     contact: {
       type: Number,
@@ -31,7 +30,6 @@ const userSchema = new mongoose.Schema(
     masterkey: {
       type: String,
       require: true,
-      minlength: 10,
     },
   },
   {
@@ -57,6 +55,8 @@ userSchema.methods.toJSON = function () {
   const userObj = user.toObject();
   delete userObj.password;
   delete userObj.masterkey;
+  delete userObj.createdAt;
+  delete userObj.updatedAt;
   return userObj;
 };
 
