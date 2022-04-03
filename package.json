@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"start": "env-cmd -f production.env node src/app.js",
+		"start": "node src/app.js",
 		"dev": "env-cmd -f development.env nodemon src/app.js",
 		"test": "env-cmd -f test.env jest --watch"
 	},
@@ -15,6 +15,7 @@
 	"dependencies": {
 		"@sendgrid/mail": "^7.6.2",
 		"bcryptjs": "^2.4.3",
+		"compression": "^1.7.4",
 		"cors": "^2.8.5",
 		"crypto-js": "^4.1.1",
 		"express": "^4.17.3",
