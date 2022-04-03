@@ -1,9 +1,7 @@
 import express from "express";
 import helmet from "helmet";
-import mongoose from "mongoose";
+import "./db/mongoose.js";
 import router from "./routes/user.js";
-
-mongoose.connect(process.env.MONGODB_URL, {});
 
 const port = process.env.PORT || 3000;
 const app = express();
