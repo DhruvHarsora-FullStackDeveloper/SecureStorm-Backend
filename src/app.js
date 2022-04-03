@@ -12,15 +12,15 @@ app.use(express.json());
 app.use(router);
 // uncaught errors catch here
 app.use((err, req, res, next) => {
-	const status = err.status || 500;
-	res.status(status).json({
-		success: 0,
-		message: err.message,
-		status: err.status,
-		stack: err.stack,
-	});
+  const status = err.status || 500;
+  res.status(status).json({
+    result: 0,
+    message: err.message,
+    status: err.status,
+    stack: err.stack,
+  });
 });
 
 app.listen(port, () => {
-	console.log(`Server Started on: http://localhost:${port}`);
+  console.log(`Server Started on: http://localhost:${port}`);
 });
