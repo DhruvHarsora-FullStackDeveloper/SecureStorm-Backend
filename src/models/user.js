@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
-const salt = bcrypt.genSaltSync(process.env.SALT_VALUE);
+const salt = bcrypt.genSaltSync(parseInt(process.env.SALT_VALUE));
 
 const userSchema = new mongoose.Schema(
   {
@@ -40,12 +40,16 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre("save", async function (next) {
-  const user = this;
-  if (user.isModified("password") || user.isModified("masterkey")) {
-    user.password = await bcrypt.hash(user.password, salt);
-    user.masterkey = await bcrypt.hash(user.masterkey, salt);
+  try {
+    const user = this;
+    if (user.isModified("password") || user.isModified("masterkey")) {
+      user.password = await bcrypt.hash(user.password, salt);
+      user.masterkey = await bcrypt.hash(user.masterkey, salt);
+    }
+    next();
+  } catch (err) {
+    next(err);
   }
-  next();
 });
 
 userSchema.methods.toJSON = function () {

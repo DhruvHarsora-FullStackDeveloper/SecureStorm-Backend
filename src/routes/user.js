@@ -12,7 +12,7 @@ router.patch("/:id", userAuth, userController.userUpdate);
 
 router.patch("/masterkey/:id", userAuth, userController.updateMasterKey);
 
-router.patch("/password", userAuth, userController.updatePassword);
+router.patch("/password/:id", userAuth, userController.updatePassword);
 
 router.delete("/:id", userAuth, userController.deleteUser);
 

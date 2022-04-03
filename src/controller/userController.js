@@ -38,8 +38,8 @@ const userLogin = async (req, res, next) => {
       const token = generateAuthToken(user);
       res.status(msg.OK_CODE).send({ result: 1, user, token });
     }
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -93,7 +93,7 @@ const updateMasterKey = async (req, res, next) => {
 
 const updatePassword = async (req, res, next) => {
   try {
-    const id = req.body.id;
+    const id = req.params.id;
     const user = await User.findById(id);
     if (!user) {
       res.status(msg.NOT_FOUND_CODE).send({
