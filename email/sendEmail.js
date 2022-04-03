@@ -2,7 +2,7 @@ import sgMail from "@sendgrid/mail";
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const ownerId = "securestormteam@gmail.com"
+const ownerId = "prem.b@simformsolutions.com";
 export const sendWelcomeEmail = (email, name) => {
   sgMail
     .send({
@@ -18,7 +18,6 @@ export const sendWelcomeEmail = (email, name) => {
       <p>Welcome to the app. Let me know how you get along with the app.</p>
       </body>
       </html>`,
-
     })
     .then(() => {
       console.log("Welcome Email sent");
@@ -34,8 +33,7 @@ export const sendCancelationEmail = (email, name) => {
       to: email,
       from: ownerId,
       subject: "Sorry to see you go! from SecureSpot",
-      html:
-        `<html>
+      html: `<html>
       <body>
       <center><img src="https://securespot.s3.amazonaws.com/sad.png"></center>
       <h2>Hey ${name}</h2>
@@ -48,7 +46,13 @@ export const sendCancelationEmail = (email, name) => {
       console.log("cancelation Email sent");
     })
     .catch((error) => {
-      console.log(error);
+      console.error(error.toString());
+
+      //Extract error msg
+      const { message, code, response } = error;
+
+      //Extract response msg
+      const { headers, body } = response;
     });
 };
 export const sendOTPEmail = (email, name, otp) => {
@@ -57,6 +61,7 @@ export const sendOTPEmail = (email, name, otp) => {
       to: email,
       from: ownerId,
       subject: `Your OTP for getting password back `,
+      text: "Hello plain world!",
       html: `
       <html>
       <body>
