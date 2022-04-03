@@ -6,6 +6,9 @@ import { generateAuthToken } from "../utils/genToken.js";
 import res_msg from "../common/messages.js";
 const router = new express.Router();
 
+router.get("/", (req, res) => {
+	res.status(200).send("ok");
+});
 router.post("/signup", async (req, res, next) => {
 	try {
 		const user = new User({
