@@ -24,6 +24,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server Started on: http://localhost:${port}`);
-});
+export default app;
