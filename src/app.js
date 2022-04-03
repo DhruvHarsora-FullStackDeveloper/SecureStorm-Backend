@@ -2,11 +2,12 @@ import express from "express";
 import helmet from "helmet";
 import "./db/mongoose.js";
 import router from "./routes/user.js";
-
+import cors from "cors";
 const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(helmet());
+app.use(cors());
 app.use(express.json());
 app.use(router);
 // uncaught errors catch here
