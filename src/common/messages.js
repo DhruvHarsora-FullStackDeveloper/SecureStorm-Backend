@@ -1,4 +1,4 @@
-const msg = {
+const res_msg = {
   OK_CODE: 200,
   CREATED_CODE: 201,
   BAD_REQ_CODE: 400,
@@ -12,5 +12,6 @@ const msg = {
   NOT_FOUND: "Not Found",
   SUCCESS: "Success",
   INCORRECT_PASSWORD: "Password is Incorrect",
+  INVALID_UPDATES: "Invalid updates",
 };
-export default msg;
+export default res_msg;
