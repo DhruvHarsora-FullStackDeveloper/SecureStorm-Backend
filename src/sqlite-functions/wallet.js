@@ -63,3 +63,23 @@ export const ShowData = ((tx)=>{
         }
     )
 })
+
+export const UpdateData = (id,password) =>{
+    db.transaction( async (tx)=>{
+        await tx.executeSql(
+            "UPDATE wallet"
+            +"SET password= ?"
+            +"WHERE ID =?",
+            [password,id]
+        )
+    })
+}
+
+export const DeleteData = (id) =>{
+    db.transaction( async (tx)=>{
+        await tx.executeSql(
+            "DELETE FROM wallet"
+            +" WHERE ID = ?",
+            +[id])
+    })
+}
